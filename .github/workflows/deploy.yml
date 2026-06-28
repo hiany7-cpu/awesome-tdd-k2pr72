@@ -24,12 +24,12 @@ jobs:
           # 跳过锁文件检查
           cache: '' 
 
-      - name: Install dependencies
+     - name: Install dependencies
         run: |
-          # 1. 强制生成锁文件，绕过报错
           npm install --package-lock-only
-          # 2. 安装所有依赖
-          npm install --legacy-peer-deps
+          # 使用 --force 强制覆盖版本冲突，这是解决 react-scripts 报错最快的方法
+          npm install --force
+          
 
       - name: Build
         run: npm run build
